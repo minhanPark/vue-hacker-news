@@ -1,18 +1,59 @@
 <template>
-  <div>
-    <p v-for="job in this.$store.state.jobs" v-bind:key="job.id">
-      <a v-bind:href="job.url">{{ job.title }}</a>
-      <small>{{ job.time_ago }}, {{ job.domain }}</small>
-    </p>
-  </div>
+  <!-- <div>
+    <ul class="news-list">
+      <li v-for="item in this.$store.state.jobs" v-bind:key="item.id" class="post">
+        <div class="points">{{item.points || 0}}</div>
+        <div>
+          <p class="news-title">
+            <a v-bind:href="item.url" target="_blank">{{ item.title }}</a>
+          </p>
+          <small class="link-text">
+            {{ item.time_ago }} by
+  <router-link v-bind:to="`/user/${item.user}`" class="link-text">{{ item.domain }}</router-link>
+  <a :href="item.url" target="_blank">{{item.domain}}</a>
+          </small>
+        </div>
+      </li>
+    </ul>
+  </div>-->
+  <ListItem></ListItem>
 </template>
 
 <script>
+import ListItem from "../components/ListItem.vue";
 export default {
-  created() {
-    this.$store.dispatch("FETCH_JOBS");
+  // created() {
+  //   this.$store.dispatch("FETCH_JOBS");
+  // },
+  components: {
+    ListItem,
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.news-list {
+  margin: 0;
+  padding: 0;
+}
+.post {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.points {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #41b883;
+}
+.news-title {
+  margin: 0;
+}
+.link-text {
+  color: #828282;
+}
+</style>
