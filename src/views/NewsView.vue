@@ -20,6 +20,7 @@
 
 <script>
 import ListItem from "../components/ListItem";
+import Bus from "../utils/bus.js";
 
 export default {
   // created() {
@@ -27,6 +28,16 @@ export default {
   // },
   components: {
     ListItem,
+  },
+  created() {
+    Bus.$emit("start:spinner");
+    this.$store
+      .dispatch("FETCH_NEWS")
+      .then(() => {
+        console.log("fetched");
+        Bus.$emit("end:spinner");
+      })
+      .catch((e) => console.log(e));
   },
 };
 </script>

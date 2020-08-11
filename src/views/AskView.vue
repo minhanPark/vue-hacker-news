@@ -20,6 +20,7 @@
 
 <script>
 import ListItem from "../components/ListItem";
+import Bus from "../utils/bus.js";
 // import { mapGetters } from "vuex";
 export default {
   //   computed: {
@@ -30,9 +31,16 @@ export default {
   //   ask: (state) => state.ask,
   // }),
   // },
-  // created() {
-  //   this.$store.dispatch("FETCH_ASK");
-  // },
+  created() {
+    Bus.$emit("start:spinner");
+    this.$store
+      .dispatch("FETCH_ASK")
+      .then(() => {
+        console.log("fetched");
+        Bus.$emit("end:spinner");
+      })
+      .catch((e) => console.log(e));
+  },
   components: {
     ListItem,
   },

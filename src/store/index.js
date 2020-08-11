@@ -49,17 +49,24 @@ export const store = new Vuex.Store({
         .then((res) => {
           console.log(res);
           context.commit("SET_NEWS", res.data);
+          return res;
         })
         .catch((e) => console.log(e));
     },
     FETCH_ASK(context) {
       fetchAskList()
-        .then((res) => context.commit("SET_ASK", res.data))
+        .then((res) => {
+          context.commit("SET_ASK", res.data);
+          return res;
+        })
         .catch((e) => console.log(e));
     },
     FETCH_JOBS(context) {
       fetchJobsList()
-        .then((res) => context.commit("SET_JOBS", res.data))
+        .then((res) => {
+          context.commit("SET_JOBS", res.data);
+          return res;
+        })
         .catch((e) => console.log(e));
     },
     FETCH_USER({ commit }, name) {
