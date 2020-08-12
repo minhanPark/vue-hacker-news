@@ -20,7 +20,8 @@
 
 <script>
 import ListItem from "../components/ListItem";
-import Bus from "../utils/bus.js";
+//import Bus from "../utils/bus.js";
+import ListMixin from "../mixins/ListMixin";
 
 export default {
   // created() {
@@ -29,16 +30,17 @@ export default {
   components: {
     ListItem,
   },
-  created() {
-    Bus.$emit("start:spinner");
-    this.$store
-      .dispatch("FETCH_NEWS")
-      .then(() => {
-        console.log("fetched");
-        Bus.$emit("end:spinner");
-      })
-      .catch((e) => console.log(e));
-  },
+  // created() {
+  //   Bus.$emit("start:spinner");
+  //   this.$store
+  //     .dispatch("FETCH_NEWS")
+  //     .then(() => {
+  //       console.log("fetched");
+  //       Bus.$emit("end:spinner");
+  //     })
+  //     .catch((e) => console.log(e));
+  // },
+  mixins: [ListMixin],
 };
 </script>
 
