@@ -6,6 +6,7 @@ import {
   fetchJobsList,
   fetchUserInfo,
   fetchItem,
+  fetchList,
 } from "../api/index";
 
 Vue.use(Vuex);
@@ -17,6 +18,7 @@ export const store = new Vuex.Store({
     jobs: [],
     user: {},
     item: {},
+    list: [],
   },
   getters: {
     fetchedAsk(state) {
@@ -41,6 +43,9 @@ export const store = new Vuex.Store({
     },
     SET_ITEM(state, item) {
       state.item = item;
+    },
+    SET_LIST(state, list) {
+      state.list = list;
     },
   },
   actions: {
@@ -77,6 +82,14 @@ export const store = new Vuex.Store({
     FETCH_ITEM({ commit }, item) {
       fetchItem(item)
         .then(({ data }) => commit("SET_ITEM", data))
+        .catch((e) => console.log(e));
+    },
+    FETCH_LIST({ commit }, pageName) {
+      fetchList(pageName)
+        .then((res) => {
+          commit("SET_LIST", res.data);
+          return res;
+        })
         .catch((e) => console.log(e));
     },
   },

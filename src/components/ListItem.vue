@@ -42,8 +42,7 @@ export default {
   // },
   computed: {
     listItems() {
-      const name = this.$route.name;
-      return this.$store.state[name];
+      return this.$store.state.list;
       // else if (name === "ask") {
       //     return this.$store.state.ask;
       //   } else if (name === "jobs") {
