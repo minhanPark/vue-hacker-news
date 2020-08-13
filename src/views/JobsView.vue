@@ -21,7 +21,7 @@
 
 <script>
 import ListItem from "../components/ListItem.vue";
-//import Bus from "../utils/bus.js";
+// import Bus from "../utils/bus.js";
 import ListMixin from "../mixins/ListMixin";
 
 export default {
@@ -39,6 +39,9 @@ export default {
   components: {
     ListItem,
   },
+  // mounted() {
+  //   Bus.$emit("end:spinner");
+  // },
 };
 </script>
 

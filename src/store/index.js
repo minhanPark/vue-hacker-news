@@ -50,7 +50,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     FETCH_NEWS(context) {
-      fetchNewsList()
+      return fetchNewsList()
         .then((res) => {
           console.log(res);
           context.commit("SET_NEWS", res.data);
@@ -59,7 +59,7 @@ export const store = new Vuex.Store({
         .catch((e) => console.log(e));
     },
     FETCH_ASK(context) {
-      fetchAskList()
+      return fetchAskList()
         .then((res) => {
           context.commit("SET_ASK", res.data);
           return res;
@@ -67,7 +67,7 @@ export const store = new Vuex.Store({
         .catch((e) => console.log(e));
     },
     FETCH_JOBS(context) {
-      fetchJobsList()
+      return fetchJobsList()
         .then((res) => {
           context.commit("SET_JOBS", res.data);
           return res;
@@ -75,17 +75,17 @@ export const store = new Vuex.Store({
         .catch((e) => console.log(e));
     },
     FETCH_USER({ commit }, name) {
-      fetchUserInfo(name)
+      return fetchUserInfo(name)
         .then((res) => commit("SET_USER", res.data))
         .catch((e) => console.log(e));
     },
     FETCH_ITEM({ commit }, item) {
-      fetchItem(item)
+      return fetchItem(item)
         .then(({ data }) => commit("SET_ITEM", data))
         .catch((e) => console.log(e));
     },
     FETCH_LIST({ commit }, pageName) {
-      fetchList(pageName)
+      return fetchList(pageName)
         .then((res) => {
           commit("SET_LIST", res.data);
           return res;

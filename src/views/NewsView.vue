@@ -20,7 +20,7 @@
 
 <script>
 import ListItem from "../components/ListItem";
-//import Bus from "../utils/bus.js";
+// import Bus from "../utils/bus.js";
 import ListMixin from "../mixins/ListMixin";
 
 export default {
@@ -30,6 +30,9 @@ export default {
   components: {
     ListItem,
   },
+  // mounted() {
+  //   Bus.$emit("end:spinner");
+  // },
   // created() {
   //   Bus.$emit("start:spinner");
   //   this.$store

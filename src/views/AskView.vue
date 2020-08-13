@@ -20,7 +20,7 @@
 
 <script>
 import ListItem from "../components/ListItem";
-//import Bus from "../utils/bus.js";
+// import Bus from "../utils/bus.js";
 import ListMixin from "../mixins/ListMixin";
 // import { mapGetters } from "vuex";
 export default {
