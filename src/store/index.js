@@ -49,30 +49,39 @@ export const store = new Vuex.Store({
     },
   },
   actions: {
-    FETCH_NEWS(context) {
-      return fetchNewsList()
-        .then((res) => {
-          console.log(res);
-          context.commit("SET_NEWS", res.data);
-          return res;
-        })
-        .catch((e) => console.log(e));
+    async FETCH_NEWS(context) {
+      // return fetchNewsList()
+      //   .then((res) => {
+      //     console.log(res);
+      //     context.commit("SET_NEWS", res.data);
+      //     return res;
+      //   })
+      //   .catch((e) => console.log(e));
+      const response = await fetchNewsList();
+      context.commit("SET_NEWS", response.data);
+      return response;
     },
-    FETCH_ASK(context) {
-      return fetchAskList()
-        .then((res) => {
-          context.commit("SET_ASK", res.data);
-          return res;
-        })
-        .catch((e) => console.log(e));
+    async FETCH_ASK(context) {
+      // return fetchAskList()
+      //   .then((res) => {
+      //     context.commit("SET_ASK", res.data);
+      //     return res;
+      //   })
+      //   .catch((e) => console.log(e));
+      const response = await fetchAskList();
+      context.commit("SET_ASK", response.data);
+      return response;
     },
-    FETCH_JOBS(context) {
-      return fetchJobsList()
-        .then((res) => {
-          context.commit("SET_JOBS", res.data);
-          return res;
-        })
-        .catch((e) => console.log(e));
+    async FETCH_JOBS(context) {
+      // return fetchJobsList()
+      //   .then((res) => {
+      //     context.commit("SET_JOBS", res.data);
+      //     return res;
+      //   })
+      //   .catch((e) => console.log(e));
+      const response = await fetchJobsList();
+      context.commit("SET_JOBS", response.data);
+      return response;
     },
     FETCH_USER({ commit }, name) {
       return fetchUserInfo(name)
