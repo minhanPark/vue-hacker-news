@@ -5,6 +5,7 @@
       <router-view></router-view>
     </transition>
     <Spinner :loading="loadingStatus"></Spinner>
+    <footer>러닝워터</footer>
   </div>
 </template>
 
